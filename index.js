@@ -44,7 +44,6 @@ module.exports = function(options) {
 
         html = html
             .replace(scriptReg, function(str, tagStart, script) {
-                console.log(file.path, tagStart)
                 try {
                     var result = uglify.minify(script, options.js);
                     return tagStart + result.code + '</script>';
