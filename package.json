@@ -1,0 +1,36 @@
+{
+  "name": "gulp-minify-inline",
+  "version": "0.0.1",
+  "description": "minify inline js and css in html files",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ifchange/gulp-minify-inline"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "inline scripts",
+    "inline css",
+    "uglify",
+    "minify"
+  ],
+  "dependencies": {
+    "clean-css": "^3.0.9",
+    "gulp-util": "^3.0.0",
+    "through2": "^0.6.1",
+    "uglify-js": "^2.4.15"
+  },
+  "homepage": "https://github.com/ifchange/gulp-minify-inline",
+  "readme": "###gulp-minify-inline\r\n\r\na plugin for gulp.js to minify inline js and css in html files\r\n\r\n###Installation\r\n\r\n###Usage\r\n\r\n<pre>\r\nvar minifyInline = require('gulp-minify-inline');\r\n\r\ngulp.task('minify', function() {\r\n  gulp.src('html/*.html')\r\n    .pipe(minifyInline())\r\n    .pipe(gulp.dest('dist'))\r\n});\r\n</pre>\r\n\r\n###Example\r\n\r\nbefore: index.html\r\n    \r\n    <!DOCTYPE html>\r\n    <html lang=\"en\">\r\n    <head>\r\n    <meta charset=\"utf-8\"/>\r\n    <title></title>\r\n    </head>\r\n    <body>\r\n        <input type=\"button\" id=\"btn\" value=\"click Me\" />\r\n\r\n        <script type=\"text/javascript\">\r\n            var btn = document.querySelector(\"#btn\");\r\n\r\n            btn.onclick = function() {\r\n                this.style.background = [\"yellow\",\"red\",\"green\",\"purple\",\"pink\",\"gray\",\"blue\",\"orange\",\"black\",\"cyan\"][Math.floor(Math.random() * 10)];\r\n            };\r\n\r\n            setInterval(function() {\r\n                console.log(btn.style.background);\r\n            },1000)\r\n\r\n        </script>\r\n    </body>\r\n    </html>\r\n\r\n\r\nafter:index.html\r\n\r\n    <!DOCTYPE html>\r\n    <html lang=\"en\">\r\n    <head>\r\n        <meta charset=\"utf-8\"/>\r\n        <title></title>\r\n    </head>\r\n    <body>\r\n        <input type=\"button\" id=\"btn\" value=\"click Me\" />\r\n\r\n        <script type=\"text/javascript\">var btn=document.querySelector(\"#btn\");btn.onclick=function(){this.style.background=[\"yellow\",\"red\",\"green\",\"purple\",\"pink\",\"gray\",\"blue\",\"orange\",\"black\",\"cyan\"][Math.floor(10*Math.random())]},setInterval(function(){console.log(btn.style.background)},1e3);</script>\r\n    </body>\r\n    </html>\r\n\r\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/ifchange/gulp-minify-inline/issues"
+  },
+  "_id": "gulp-minify-inline@0.0.1"
+}
