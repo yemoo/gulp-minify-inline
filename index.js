@@ -12,7 +12,7 @@ module.exports = function(options) {
     };
     options.js = options.js || {};
     options.js.fromString = true;
-    options.filter = function(file) {
+    options.filter = options.filter || function(file) {
         return /^\.html?$/.test(path.extname(file.path));
     };
 
@@ -53,6 +53,7 @@ module.exports = function(options) {
                     gutil.log(script);
                     gutil.log('-----------------------------------');
                 }
+                return str;
             })
             .replace(cssReg, function(str, tagStart, css) {
                 try {
@@ -64,6 +65,7 @@ module.exports = function(options) {
                     gutil.log(css);
                     gutil.log('-----------------------------------');
                 }
+                return str;
             });
 
         file.contents = new Buffer(html);
