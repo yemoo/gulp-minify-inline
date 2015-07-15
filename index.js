@@ -48,11 +48,11 @@ module.exports = function(options) {
                     var result = uglify.minify(script, options.js);
                     return tagStart + result.code + '</script>';
                 } catch (e) {
-                    gutil.log('-----------------------------------');
+		    gutil.log('-----------------------------------');
                     gutil.log('minify inline scripts error in file: ' + file.path);
                     gutil.log(script);
                     gutil.log('-----------------------------------');
-		    return tagStart + script.replace(/(^\s+|[\n\r\t]+|\s+$)/,'') + '</script>';
+                    return tagStart + script.replace(/(^\s+|\s*[\n\r\t]+\s*|\s+$)/g,'') + '</script>';
                 }
                 return str;
             })
