@@ -52,7 +52,7 @@ module.exports = function(options) {
                     gutil.log('minify inline scripts error in file: ' + file.path);
                     gutil.log(script);
                     gutil.log('-----------------------------------');
-                    return tagStart + script.replace(/(^\s+|\s*[\n\r\t]+\s*|\s+$)/g,'') + '</script>';
+                    return tagStart + script.replace(/(^\s+|\s*[\n\r\t]+\s*|\s+$)/g,' ') + '</script>';
                 }
                 return str;
             })
